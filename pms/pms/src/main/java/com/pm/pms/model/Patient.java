@@ -3,11 +3,16 @@ package com.pm.pms.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
+@RequiredArgsConstructor
+@Data
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +28,6 @@ public class Patient {
 
     @NotNull
     private String address;
-
 
     @NotNull
     private LocalDate dateOfBirth;
