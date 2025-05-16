@@ -2,12 +2,13 @@ package com.pm.pms.mapper;
 
 import com.pm.pms.dto.PatientResponseDTO;
 import com.pm.pms.model.Patient;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 
 @RequiredArgsConstructor
 public class PatientMapper {
-    public static PatientResponseDTO toDTO(Patient patient){
+    public static PatientResponseDTO toDTO(Patient patient) {
         PatientResponseDTO patientDTO = new PatientResponseDTO();
         patientDTO.setId(patient.getId().toString());
         patientDTO.setName(patient.getName());
