@@ -25,8 +25,10 @@ public class PatientServiceImpl implements PatientService {
                 .toList();
     }
 
-    public PatientResponseDTO createPatient (PatientRequestDTO patientRequestDTO){
-        Patient newPatient = patientRepository.save();
+    @Override
+    public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO){
+        Patient newPatient = patientRepository.save(PatientMapper.toModel(patientRequestDTO));
+         return PatientMapper.toDTO(newPatient);
     }
 }
 
