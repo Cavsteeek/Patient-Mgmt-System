@@ -13,5 +13,4 @@ public interface PatientService {
 
     PatientResponseDTO updatePatient(UUID id, PatientRequestDTO patientRequestDTO);
 
-    PatientResponseDTO updatePatient(UUID id, PatientRequestDTO patientRequestDTO);
 }
