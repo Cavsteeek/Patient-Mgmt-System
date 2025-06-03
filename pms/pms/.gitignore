@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.env
+*.pid
+/data/
+!data/.gitkeep
+
+# Logs
+*.log
+logs/
+
