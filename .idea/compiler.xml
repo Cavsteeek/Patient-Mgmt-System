@@ -18,6 +18,16 @@
         </processorPath>
         <module name="billing-service" />
       </profile>
+      <profile name="Annotation profile for pms" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/3.4.4/spring-boot-configuration-processor-3.4.4.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="patient-service" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="pms" target="21" />
@@ -26,6 +36,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="billing-service" options="-parameters" />
+      <module name="patient-service" options="-parameters" />
       <module name="pms" options="-parameters" />
     </option>
   </component>
