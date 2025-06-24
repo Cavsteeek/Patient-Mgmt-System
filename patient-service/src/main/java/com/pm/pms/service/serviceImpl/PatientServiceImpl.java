@@ -5,16 +5,13 @@ import com.pm.pms.dto.PatientResponseDTO;
 import com.pm.pms.exception.EmailAlreadyExistsException;
 import com.pm.pms.exception.PatientNotFoundException;
 import com.pm.pms.grpc.BillingServiceGrpcClient;
+import com.pm.pms.kafka.KafkaProducer;
 import com.pm.pms.mapper.PatientMapper;
 import com.pm.pms.model.Patient;
 import com.pm.pms.repository.PatientRepository;
 import com.pm.pms.service.PatientService;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +21,7 @@ import java.util.UUID;
 public class PatientServiceImpl implements PatientService {
     private final PatientRepository patientRepository;
     private final BillingServiceGrpcClient billingServiceGrpcClient;
+    private final KafkaProducer kafkaProducer;
 
     @Override
     public List<PatientResponseDTO> getPatients() {
@@ -46,6 +44,8 @@ public class PatientServiceImpl implements PatientService {
                 newPatient.getName(),
                 newPatient.getEmail()
         );
+
+        kafkaProducer.sendEvent(newPatient);
 
         return PatientMapper.toDTO(newPatient);
     }
